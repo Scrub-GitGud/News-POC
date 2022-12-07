@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>News POC</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div id="login_form" class="form hide">
+        <div class="form_title">Login</div>
+        <div class="form_content">
+            <div>
+                <label for="">Username</label>
+                <input type="text" name="username" placeholder="Enter Username...">
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input type="password" name="password" placeholder="Enter Password...">
+            </div>
+            <div class="btn_container">
+                <button>Login</button>
+            </div>
+            <div class="form_small_text">
+                Don't have an account? <span onclick="GoToRegisterPage()" class="link">Sign Up</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup_form" class="form">
+        <div class="form_title">Sign Up</div>
+        <div class="form_content">
+            <div>
+                <label for="">Username</label>
+                <input type="text" name="username" placeholder="Enter Username...">
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input type="password" name="password" placeholder="Enter Password...">
+            </div>
+            <div>
+                <label for="">Confirm Password</label>
+                <input type="password" name="confirm_password" placeholder="Confirm Password...">
+            </div>
+            <div class="btn_container">
+                <button onclick="Register()">Sign Up</button>
+            </div>
+            <div class="form_small_text">
+                Already have an account? <span onclick="GoToLoginPage()" class="link">Sign In</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <script type="module">
+        import {Register, GoToLoginPage, GoToRegisterPage} from './scripts/auth.js'
+        import {InitUsers} from './scripts/main.js'
+        
+        window.Register = Register
+        window.GoToLoginPage = GoToLoginPage
+        window.GoToRegisterPage = GoToRegisterPage
+
+        InitUsers()
+    </script>
+</body>
+</html>
