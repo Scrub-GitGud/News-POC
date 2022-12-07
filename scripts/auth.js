@@ -4,9 +4,6 @@ import { generateString } from "./utils.js"
 
 
 let users = []
-const domain = window.location.hostname
-
-
 
 const login_form = document.getElementById("login_form")
 const signup_form = document.getElementById("signup_form")
@@ -28,6 +25,33 @@ const GoToLoginPage = () => {
 }
 
 
+
+const Login = () => {
+    let username = document.querySelector("#login_form input[name='username']").value
+    let password = document.querySelector("#login_form input[name='password']").value
+
+    if(!username || !password || username == "" || password === "") {
+        alert("Please enter required field");
+        return
+    }
+
+    const found_user = users.find(user => user.username == username)
+    if(!found_user) {
+        alert("User doesn't exist.")
+        return
+    }
+
+    if(found_user.password != password) {
+        alert("Wrong Password. Please try again.")
+        return
+    }
+    
+    Authenticate(found_user)
+}
+
+const Logout = () => {
+    localStorage.removeItem("auth-user-newspoc")
+}
 
 
 
@@ -92,4 +116,4 @@ const CheckAuth = () => {
 
 
 
-export {AddUser, GetUsers, Register, GoToRegisterPage, GoToLoginPage, CheckAuth}
+export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth}

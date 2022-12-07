@@ -4,11 +4,13 @@ import { generateString } from "./utils.js"
 
 
 const curr_page = window.location.pathname
+const domain = window.location.hostname
 
 
 
 
 const InitUsers = () => {
+    console.log("Initializing User...")
     const users_newspoc = GetUsers()
     if(!users_newspoc) {
         const new_user = {
@@ -27,18 +29,19 @@ const Update = () => {
     if(!CheckAuth()) {
         if(curr_page != "/auth.html") {
             console.log("Go to login page")
+            window.location.href = "/auth.html"
         }
     } else {
         if(curr_page == "/auth.html") {
             console.log("Go to home page")
+            window.location.href = "/"
         }
     }
 }
 
 
-// setInterval(Update,3000)
+setInterval(Update,1500)
 
-console.log(window.location.hostname)
 
 
 export {InitUsers}
