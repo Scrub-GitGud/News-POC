@@ -53,11 +53,11 @@ const Clock = () => {
 
     const d = new Date()
 
-    hour_el.innerText = d.getHours()
-    minute_el.innerText = d.getMinutes()
-    second_el.innerText = d.getSeconds()
+    hour_el.innerText = d.getHours().toString().length == 1 ? "0"+d.getHours() : d.getHours()
+    minute_el.innerText = d.getMinutes().toString().length == 1 ? "0"+d.getMinutes() : d.getMinutes()
+    second_el.innerText = d.getSeconds().toString().length == 1 ? "0"+d.getSeconds() : d.getSeconds()
 
-    day_el.innerText = d.getDate()
+    day_el.innerText = d.getDate().toString().length == 1 ? "0"+d.getDate() : d.getDate()
     month_el.innerText = monthNames[d.getMonth()]
     year_el.innerText = d.getFullYear()
 }
