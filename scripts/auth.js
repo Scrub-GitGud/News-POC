@@ -83,6 +83,7 @@ const Register = () => {
     Authenticate(new_user)
 }
 
+
 const Authenticate = (user) => {
     localStorage.setItem("auth-user-newspoc", user.id)
 }
@@ -111,6 +112,24 @@ const GetUsers = () => {
 const CheckAuth = () => {
     const auth_user_id = localStorage.getItem("auth-user-newspoc")
     return auth_user_id
+}
+
+
+
+const GetProfileInfo = () => {
+    const auth_user_id = localStorage.getItem("auth-user-newspoc")
+    if(!auth_user_id) {
+        console.log("Auth User ID not found!")
+        return
+    }
+
+    const auth_user = users.find(user => user.username == username) 
+    if(!auth_user) {
+        console.log("Auth User Not Found")
+        return
+    }
+    
+    return auth_user
 }
 
 

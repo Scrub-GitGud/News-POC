@@ -7,8 +7,6 @@ const curr_page = window.location.pathname
 const domain = window.location.hostname
 
 
-
-
 const InitUsers = () => {
     console.log("Initializing User...")
     const users_newspoc = GetUsers()
@@ -26,6 +24,8 @@ const InitUsers = () => {
 
 const Update = () => {
     console.log("Updating..")
+    Clock()
+
     if(!CheckAuth()) {
         if(curr_page != "/auth.html") {
             console.log("Go to login page")
@@ -39,9 +39,30 @@ const Update = () => {
     }
 }
 
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-setInterval(Update,1500)
+const Clock = () => {
+    const hour_el = document.getElementById("hour")
+    const minute_el = document.getElementById("minute")
+    const second_el = document.getElementById("second")
+
+    const day_el = document.getElementById("day")
+    const month_el = document.getElementById("month")
+    const year_el = document.getElementById("year")
 
 
+    const d = new Date()
+
+    hour_el.innerText = d.getHours()
+    minute_el.innerText = d.getMinutes()
+    second_el.innerText = d.getSeconds()
+
+    day_el.innerText = d.getDate()
+    month_el.innerText = monthNames[d.getMonth()]
+    year_el.innerText = d.getFullYear()
+}
+
+
+setInterval(Update,1000)
 
 export {InitUsers}
