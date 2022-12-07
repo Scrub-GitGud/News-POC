@@ -4,6 +4,9 @@
 body {
     background-color: #f7f7f7;
     font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 input {
@@ -20,6 +23,21 @@ label {
     display: block;
 }
 
+
+
+.hide {
+    display: none !important;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+/*                                   LOGIN PAGE STARTS FROM HERE                             */
+/* ----------------------------------------------------------------------------------------- */
 
 
 .form {
@@ -79,11 +97,6 @@ button:hover {
 }
 
 
-
-.hide {
-    display: none !important;
-}
-
 /* ----------------------------------------------------------------------------------------- */
 /*                                    HOME PAGE STARTS FROM HERE                             */
 /* ----------------------------------------------------------------------------------------- */
@@ -92,17 +105,43 @@ button:hover {
     max-width: 1300px;
     margin: 0 auto;
 }
-.datetime {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+#navbar {
+    background: white;
+    margin-bottom: 50px;
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+
+}
+#navbar input {
+    margin: 15px;
+    border-radius: 100px;
+}
+
+
+.top_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.big_news {
+    grid-column: span 1 / span 1;
+    background-color: white;
     border-radius: 10px;
     padding: 30px;
+}
+
+.datetime {
+    grid-column: span 1 / span 1;
+    border-radius: 10px;
+    padding: 50px;
     text-align: center;
+    background-color: white;
 }
 #clock {
-    font-size: 100px;
+    font-size: 90px;
     font-weight: 500;
 }
 #date {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
 }
