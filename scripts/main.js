@@ -50,6 +50,10 @@ const Clock = () => {
     const month_el = document.getElementById("month")
     const year_el = document.getElementById("year")
 
+    if(!hour_el || !minute_el || !second_el || !day_el || !month_el || !year_el) {
+        return 
+    }
+
 
     const d = new Date()
 
