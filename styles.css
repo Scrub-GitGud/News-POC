@@ -44,7 +44,7 @@ label {
 
 
 .mt-3 {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .container {
@@ -166,7 +166,7 @@ label {
 .news_container {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 20px;
 }
 .news_card {
     background-color: white;
@@ -203,4 +203,59 @@ label {
 .news_card_content button:hover {
     background-color: black;
     color: white;
+}
+
+
+
+
+
+.weather_container {
+    border-radius: 10px;
+    background-color: white;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+
+    padding: 40px;
+}
+
+.temperature_container {
+    display: flex;
+    align-items: center;
+
+}
+.temperature_icon {
+    font-size: 30px;
+    margin-right: 30px;
+}
+.temperature_container_2 {
+    display: flex;
+}
+#temperature {
+    font-size: 50px;
+}
+.degree_symbol {
+    font-size: 30px;
+    position: relative;
+    top: -10px;
+    font-weight: bold;
+}
+
+.sun_rise_set_container {
+    display: flex;
+    align-items: center;
+}
+.sun_rise_set_icon {
+    font-size: 30px;
+    margin-right: 20px;
+}
+.sun_rise_set_text {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.sun_rise_set_time {
+    font-size: 15px;
+    font-weight: bold;
 }
