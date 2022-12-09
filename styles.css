@@ -327,6 +327,52 @@ button:hover, .btn {
     font-weight: bold;
 }
 
+.forecast {
+    margin-top: 20px;
+    
+    border-radius: 10px;
+    background-color: white;
+
+    /* padding: 40px; */
+}
+.forecast .title_container {
+    padding: 20px;
+    border-bottom: 2px solid #d3d3d3;
+}
+.forecast .title_container .title {
+    font-size: 25px;
+    font-weight: 500;
+}
+._7_day_forecast {
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+}
+.forecast_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.forecast_item:not(:last-child) {
+    border-right: 2px solid #d3d3d37c;
+}
+.forecast_item img {
+    height: 40px;
+    width: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.forecast_item_temperature {
+
+}
+.forecast_item_sign {
+    position: relative;
+    top: -30%;
+}
+
 
 
 
