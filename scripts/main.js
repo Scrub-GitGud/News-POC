@@ -1,6 +1,6 @@
 import { AddUser, CheckAuth, GetProfiles, GetUsers } from "./auth.js"
 import { GetNews } from "./news.js"
-import { generateString } from "./utils.js"
+import { generateString, monthNames } from "./utils.js"
 
 
 
@@ -40,7 +40,7 @@ const Update = () => {
     }
 }
 
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 
 const Clock = () => {
     const hour_el = document.getElementById("hour")
