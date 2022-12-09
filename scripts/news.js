@@ -7,12 +7,14 @@ import { formatDate, monthNames, monthShortNames } from "./utils.js"
 
 
 const base_url = "https://newsapi.org/v2/"
-const api_key = "afebf1ea55464655b8d6b44367a09353"
+// const api_key = "afebf1ea55464655b8d6b44367a09353" // Rifatnoor
+const api_key = "aa5b334198c3416eaa0ba2142d84a0c9" // Bananatree
 let q = "Apple&from=2022-12-09"
 let sortBy = "popularity"
 let country = "us"
 let sources = "bbc-news"
 let default_new_image = "https://puducherry-dt.gov.in/wp-content/themes/district-theme-2/images/news.jpg"
+
 
 
 var typingTimer;
@@ -45,6 +47,11 @@ const SearchNews = () => {
     let url = `${base_url}everything?q=${search_news_el.value}&apiKey=${api_key}`
     
     SendNewsApiReq(url)
+}
+
+const ChangeCountry = (event) => {
+    country = event.target.value
+    GetNews()
 }
 
 const GetNews = () => {
@@ -144,4 +151,4 @@ const makeNewsCard = (news_item) => {
 }
 
 
-export {GetNews, SearchNews}
+export {GetNews, SearchNews, ChangeCountry}

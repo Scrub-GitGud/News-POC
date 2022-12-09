@@ -4,6 +4,8 @@ import { generateString, monthNames } from "./utils.js"
 import { GetWeather } from "./weather.js"
 
 
+const countries = ["ae", "ar", "at", "au", "be", "bg", "br", "ca", "ch", "cn", "co", "cu", "cz", "de", "eg", "fr", "gb", "gr", "hk", "hu", "id", "ie", "il", "in", "it", "jp", "kr", "lt", "lv", "ma", "mx", "my", "ng", "nl", "no", "nz", "ph", "pl", "pt", "ro", "rs", "ru", "sa", "se", "sg", "si", "sk", "th", "tr", "tw", "ua", "us", "ve"]
+
 
 const curr_page = window.location.pathname
 const domain = window.location.hostname
@@ -68,6 +70,20 @@ const Clock = () => {
     year_el.innerText = d.getFullYear()
 }
 
+const renderCountriesOptions = () => {
+    const select_el = document.querySelector("#navbar select")
+
+    if(!select_el) {
+        return
+    }
+
+    countries.forEach(country_code => {
+        let new_el = document.createElement("option")
+        new_el.innerText = country_code
+        select_el.appendChild(new_el)
+    });
+    
+}
 
 setInterval(Update,1000)
 
@@ -75,5 +91,7 @@ Update()
 GetNews()
 GetProfiles()
 GetWeather()
+InitUsers()
 
-export {InitUsers}
+
+export {InitUsers, renderCountriesOptions}

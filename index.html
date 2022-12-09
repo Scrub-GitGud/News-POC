@@ -9,7 +9,26 @@
 
     <div id="navbar">
         <div class="container flex between i_center">
-            <input name="search_news" type="search" placeholder="Search..">
+            <div class="flex i_center">
+                <input name="search_news" type="text" placeholder="Search..">
+
+                <!-- ! Copied From: https://codepen.io/avstorm/pen/bPOgRO -->
+                <div class="custom-select">
+                    <label class="select" for="slct">
+                        <select onchange="ChangeCountry(event)" id="slct" required="required">
+                            <option value="" disabled="disabled" selected="selected">Select option</option>
+                        </select>
+                        <svg>
+                        <use xlink:href="#select-arrow-down"></use>
+                        </svg>
+                    </label>
+                    <svg class="sprites">
+                        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                            <polyline points="1 1 5 5 9 1"></polyline>
+                        </symbol>
+                    </svg>
+                </div>
+            </div>
             <div>
                 <!-- <button onclick="Logout()" class="btn">Logout</button> -->
                 <a href="/profile.html">Profile</a>
@@ -172,12 +191,15 @@
     
     <script type="module">
         import {Logout} from './scripts/auth.js'
-        import {InitUsers} from './scripts/main.js'
+        import {renderCountriesOptions} from './scripts/main.js'
+        import {ChangeCountry} from './scripts/news.js'
 
         window.Logout = Logout
+        window.ChangeCountry = ChangeCountry
         
 
-        InitUsers()
+        
+        renderCountriesOptions()
     </script>
 </body>
 </html>
