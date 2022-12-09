@@ -1,6 +1,7 @@
 import { AddUser, CheckAuth, GetProfiles, GetUsers } from "./auth.js"
 import { GetNews } from "./news.js"
 import { generateString, monthNames } from "./utils.js"
+import { GetWeather } from "./weather.js"
 
 
 
@@ -73,5 +74,6 @@ setInterval(Update,1000)
 Update()
 GetNews()
 GetProfiles()
+GetWeather()
 
 export {InitUsers}

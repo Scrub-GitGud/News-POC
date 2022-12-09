@@ -14,4 +14,28 @@ export function generateString(length) {
 }
 
 
-export {monthNames, monthShortNames}
+const CalcUnixDate = (unix) => {
+    const date = new Date(unix * 1000)
+    const now = new Date()
+    
+    let diff = parseInt((now.getTime() - date.getTime()/1000))
+    return msToTime(diff)
+}
+
+
+// ! Copied From: https://stackoverflow.com/questions/19700283/how-to-convert-time-in-milliseconds-to-hours-min-sec-format-in-javascript
+function msToTime(duration) {
+    var milliseconds = Math.floor((duration % 1000) / 100),
+      seconds = Math.floor((duration / 1000) % 60),
+      minutes = Math.floor((duration / (1000 * 60)) % 60),
+      hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+  
+    // return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    return hours + "." + minutes;
+}
+
+export {monthNames, monthShortNames, CalcUnixDate}

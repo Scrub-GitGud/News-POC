@@ -286,7 +286,11 @@ button:hover, .btn {
 }
 .temperature_icon {
     font-size: 30px;
-    margin-right: 30px;
+    margin-right: 20px;
+}
+.temperature_icon img {
+    height: 80px;
+    width: 80px;
 }
 .temperature_container_2 {
     display: flex;
@@ -308,6 +312,10 @@ button:hover, .btn {
 .sun_rise_set_icon {
     font-size: 30px;
     margin-right: 20px;
+}
+.sun_rise_set_icon img {
+    height: 60px;
+    width: 60px;
 }
 .sun_rise_set_text {
     font-size: 20px;
