@@ -1,4 +1,5 @@
 import { AddUser, CheckAuth, GetUsers } from "./auth.js"
+import { GetNews } from "./news.js"
 import { generateString } from "./utils.js"
 
 
@@ -68,5 +69,8 @@ const Clock = () => {
 
 
 setInterval(Update,1000)
+
+Update()
+GetNews()
 
 export {InitUsers}
