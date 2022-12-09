@@ -22,7 +22,7 @@
 
             <div class="single_line_input">
                 <div class="label">Username:</div>
-                <input type="text" name="username" id="">
+                <input type="text" name="username" id="" disabled>
             </div>
             <div class="single_line_input">
                 <div class="label">First Name:</div>
@@ -36,9 +36,14 @@
                 <div class="label">Email</div>
                 <input type="text" name="email" id="">
             </div>
+            <div class="single_line_input">
+                <div class="label">Country</div>
+                <input type="text" name="country" id="">
+            </div>
 
-            <div class="btn_container">
+            <div class="btn_container flex i_center">
                 <button onclick="SaveMyProfile()">Save</button>
+                <button  class="btn_red" onclick="DeleteMyProfile()">Delete Profile</button>
             </div>
         </div>
         
@@ -50,9 +55,11 @@
         import {Logout, SaveMyProfile} from './scripts/auth.js'
         import {InitUsers} from './scripts/main.js'
         import {GetMyProfile} from './scripts/auth.js'
+        import {DeleteMyProfile} from './scripts/auth.js'
 
         window.Logout = Logout
         window.SaveMyProfile = SaveMyProfile
+        window.DeleteMyProfile = DeleteMyProfile
         
 
         InitUsers()

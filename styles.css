@@ -423,3 +423,7 @@ button:hover, .btn {
     /* width: 40%; */
     /* margin-top: 30px; */
 }
+.btn_red {
+    background-color: tomato !important;
+    margin-left: 20px;
+}

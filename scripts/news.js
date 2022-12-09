@@ -100,6 +100,11 @@ const renderBigNews = (big_news) => {
     const big_news_title = document.querySelector("#big_news #title")
     const big_news_authod = document.querySelector("#big_news #author")
     const big_news_date = document.querySelector("#big_news #date")
+
+
+    if(!big_news_img || !big_news_title || !big_news_authod || !big_news_date) {
+        return
+    }
     
     if(!big_news) {
         big_news_img.src = default_new_image,

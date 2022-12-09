@@ -166,6 +166,7 @@ const GetMyProfile = () => {
     let f_name_el = document.querySelector("#profile_form input[name='f_name']")
     let l_name_el = document.querySelector("#profile_form input[name='l_name']")
     let email_el = document.querySelector("#profile_form input[name='email']")
+    let country_el = document.querySelector("#profile_form input[name='country']")
  
     if(!username_el || !f_name_el || !l_name_el || !email_el) {
         console.log("Some error or something...")
@@ -176,6 +177,7 @@ const GetMyProfile = () => {
     f_name_el.value = profile.f_name ?? ""
     l_name_el.value = profile.l_name ?? ""
     email_el.value = profile.email ?? ""
+    country_el.value = profile.country ?? ""
 }
 
 const SaveMyProfile = () => {
@@ -190,8 +192,9 @@ const SaveMyProfile = () => {
     let f_name_el = document.querySelector("#profile_form input[name='f_name']")
     let l_name_el = document.querySelector("#profile_form input[name='l_name']")
     let email_el = document.querySelector("#profile_form input[name='email']")
+    let country_el = document.querySelector("#profile_form input[name='country']")
  
-    if(!username_el || !f_name_el || !l_name_el || !email_el) {
+    if(!username_el || !f_name_el || !l_name_el || !email_el || !country_el) {
         console.log("Some error or something...")
         return
     }
@@ -202,6 +205,7 @@ const SaveMyProfile = () => {
         f_name: f_name_el.value,
         l_name: l_name_el.value,
         email: email_el.value,
+        country: country_el.value,
     }
 
     let updated_profiles = profiles.map((profile) => profile.user_id == auth_user_id ? updated_profile : profile)
@@ -212,7 +216,27 @@ const SaveMyProfile = () => {
     alert("Prfile Saved")
 }
 
+const DeleteMyProfile = () => {
+    console.log("Deleting Profile...")
+
+    const auth_user_id = localStorage.getItem("auth-user-newspoc")
+    if(!auth_user_id) {
+        console.log("Auth User ID not found!")
+        return
+    }
+
+    let updated_profiles = profiles.filter((profile) => profile.user_id != auth_user_id)
+    console.log(updated_profiles)
+    localStorage.setItem("profiles-newspoc", JSON.stringify(updated_profiles))
+
+    let updated_users = users.filter((user) => user.id != auth_user_id)
+    console.log(updated_users)
+    localStorage.setItem("users-newspoc", JSON.stringify(updated_users))
+
+    Logout()
+    
+    alert("Prfile Deleted")
+}
 
 
-
-export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth, GetProfiles, GetMyProfile, SaveMyProfile}
+export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth, GetProfiles, GetMyProfile, SaveMyProfile, DeleteMyProfile}
