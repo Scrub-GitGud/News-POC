@@ -15,15 +15,48 @@
         </div>
     </div>
 
+    <div class="container">
+
+        <div id="profile_form">
+            <div class="header">Profile Settings</div>
+
+            <div class="single_line_input">
+                <div class="label">Username:</div>
+                <input type="text" name="username" id="">
+            </div>
+            <div class="single_line_input">
+                <div class="label">First Name:</div>
+                <input type="text" name="f_name" id="">
+            </div>
+            <div class="single_line_input">
+                <div class="label">Last Name:</div>
+                <input type="text" name="l_name" id="">
+            </div>
+            <div class="single_line_input">
+                <div class="label">Email</div>
+                <input type="text" name="email" id="">
+            </div>
+
+            <div class="btn_container">
+                <button onclick="SaveMyProfile()">Save</button>
+            </div>
+        </div>
+        
+        
+    </div>
+
     
     <script type="module">
-        import {Logout} from './scripts/auth.js'
+        import {Logout, SaveMyProfile} from './scripts/auth.js'
         import {InitUsers} from './scripts/main.js'
+        import {GetMyProfile} from './scripts/auth.js'
 
         window.Logout = Logout
+        window.SaveMyProfile = SaveMyProfile
         
 
         InitUsers()
+        GetMyProfile()
     </script>
 </body>
 </html>

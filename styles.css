@@ -92,7 +92,7 @@ label {
 }
 
 
-.form button, .btn {
+.form button, .btn, #profile_form button {
     padding: 10px 35px;
     font-size: 20px;
     background-color: #418ef3;
@@ -104,7 +104,7 @@ label {
 .form button {
     margin-top: 10px;
 }
-.form button:hover, .btn {
+button:hover, .btn {
     opacity: 0.8;
 }
 .btn_container {
@@ -273,6 +273,11 @@ label {
 
     padding: 40px;
 }
+.weather_location {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
 
 .temperature_container {
     display: flex;
@@ -312,4 +317,44 @@ label {
 .sun_rise_set_time {
     font-size: 15px;
     font-weight: bold;
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+/*                                  PROFILE PAGE STARTS FROM HERE                            */
+/* ----------------------------------------------------------------------------------------- */
+
+#profile_form {
+    
+}
+
+#profile_form .header {
+    font-size: 40px;
+    font-weight: 500;
+    border-bottom: 2px solid #c0bfbf;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+#profile_form .single_line_input {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#profile_form .label {
+    width: 200px;
+    font-size: 20px;
+    font-weight: 500;
+}
+#profile_form input {
+    margin-bottom: 0;
+}
+#profile_form .btn_container {
+    /* text-align: right; */
+    text-align: left;
+    /* width: 40%; */
+    /* margin-top: 30px; */
 }

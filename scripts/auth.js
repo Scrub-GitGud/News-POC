@@ -4,6 +4,7 @@ import { generateString } from "./utils.js"
 
 
 let users = []
+let profiles = []
 
 const login_form = document.getElementById("login_form")
 const signup_form = document.getElementById("signup_form")
@@ -80,6 +81,7 @@ const Register = () => {
         password: password
     }
     AddUser(new_user)
+    AddProfile(new_user)
     Authenticate(new_user)
 }
 
@@ -92,6 +94,18 @@ const Authenticate = (user) => {
 const AddUser = (user) => {
     users.push(user)
     localStorage.setItem("users-newspoc", JSON.stringify(users))
+}
+const AddProfile = (user) => {
+    let new_profile = {
+        user_id: user.id,
+        f_name: "",
+        l_name: "",
+        email: ""
+    }
+    
+    profiles.push(new_profile)
+
+    localStorage.setItem("profiles-newspoc", JSON.stringify(profiles))
 }
 
 const IsUserAlreadyExist = (username) => {
@@ -107,6 +121,15 @@ const GetUsers = () => {
     }
     return users_newspoc;
 }
+const GetProfiles = () => {
+    const profiles_newspoc = localStorage.getItem("profiles-newspoc")
+    if(profiles_newspoc) {
+        profiles = JSON.parse(profiles_newspoc)
+    } else {
+        profiles = []
+    }
+    return profiles_newspoc;
+}
 
 
 const CheckAuth = () => {
@@ -115,24 +138,81 @@ const CheckAuth = () => {
 }
 
 
-
-const GetProfileInfo = () => {
+const GetMyProfile = () => {
     const auth_user_id = localStorage.getItem("auth-user-newspoc")
     if(!auth_user_id) {
         console.log("Auth User ID not found!")
         return
     }
 
-    const auth_user = users.find(user => user.username == username) 
+    const auth_user = users.find((user) => user.id == auth_user_id) 
     if(!auth_user) {
         console.log("Auth User Not Found")
         return
     }
+
+    const profile = profiles.find((profile) => profile.user_id == auth_user_id)
+
+    console.log("Auth User: ", auth_user)
+    console.log("Auth Profile: ", profile)
+
+    if(!profile) {
+        console.log("Profile not found")
+        return
+    }
+
+
+    let username_el = document.querySelector("#profile_form input[name='username']")
+    let f_name_el = document.querySelector("#profile_form input[name='f_name']")
+    let l_name_el = document.querySelector("#profile_form input[name='l_name']")
+    let email_el = document.querySelector("#profile_form input[name='email']")
+ 
+    if(!username_el || !f_name_el || !l_name_el || !email_el) {
+        console.log("Some error or something...")
+        return
+    }
+
+    username_el.value = auth_user.username ?? ""
+    f_name_el.value = profile.f_name ?? ""
+    l_name_el.value = profile.l_name ?? ""
+    email_el.value = profile.email ?? ""
+}
+
+const SaveMyProfile = () => {
+    const auth_user_id = localStorage.getItem("auth-user-newspoc")
+    if(!auth_user_id) {
+        console.log("Auth User ID not found!")
+        return
+    }
     
-    return auth_user
+    
+    let username_el = document.querySelector("#profile_form input[name='username']")
+    let f_name_el = document.querySelector("#profile_form input[name='f_name']")
+    let l_name_el = document.querySelector("#profile_form input[name='l_name']")
+    let email_el = document.querySelector("#profile_form input[name='email']")
+ 
+    if(!username_el || !f_name_el || !l_name_el || !email_el) {
+        console.log("Some error or something...")
+        return
+    }
+
+    
+    let updated_profile = {
+        user_id: auth_user_id,
+        f_name: f_name_el.value,
+        l_name: l_name_el.value,
+        email: email_el.value,
+    }
+
+    let updated_profiles = profiles.map((profile) => profile.user_id == auth_user_id ? updated_profile : profile)
+    console.log(updated_profiles)
+
+    localStorage.setItem("profiles-newspoc", JSON.stringify(updated_profiles))
+
+    alert("Prfile Saved")
 }
 
 
 
 
-export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth}
+export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth, GetProfiles, GetMyProfile, SaveMyProfile}

@@ -1,4 +1,4 @@
-import { AddUser, CheckAuth, GetUsers } from "./auth.js"
+import { AddUser, CheckAuth, GetProfiles, GetUsers } from "./auth.js"
 import { GetNews } from "./news.js"
 import { generateString } from "./utils.js"
 
@@ -72,5 +72,6 @@ setInterval(Update,1000)
 
 Update()
 GetNews()
+GetProfiles()
 
 export {InitUsers}
