@@ -13,6 +13,10 @@ export function generateString(length) {
     return result;
 }
 
+const formatDate = (_date) => {
+    let date = new Date(_date)
+    return `${date.getDate()} ${monthShortNames[date.getMonth()]}, ${date.getFullYear()}`
+}
 
 const CalcUnixDate = (unix) => {
     const date = new Date(unix * 1000)
@@ -38,4 +42,5 @@ function msToTime(duration) {
     return hours + "." + minutes;
 }
 
-export {monthNames, monthShortNames, CalcUnixDate}
+
+export {monthNames, monthShortNames, CalcUnixDate, formatDate}

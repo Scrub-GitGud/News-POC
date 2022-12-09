@@ -57,6 +57,12 @@ label {
     padding: 0 20px;
 }
 
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* ----------------------------------------------------------------------------------------- */
 /*                                   LOGIN PAGE STARTS FROM HERE                             */
 /* ----------------------------------------------------------------------------------------- */
@@ -173,11 +179,15 @@ button:hover, .btn {
     height: 100%;
     width: 100%;
     padding: 45px;
+
+    overflow: hidden;
 }
 .big_news .text {
     color: white;
     font-size: 35px;
     font-weight: bold;
+
+    width: 90%;
 
     margin-bottom: 10px;
 }
@@ -190,6 +200,7 @@ button:hover, .btn {
 .big_news .sub_text {
     color: white;
     font-weight: 500;
+    margin-bottom: 20px;
 }
 
 
@@ -243,7 +254,7 @@ button:hover, .btn {
 .news_card_text {
     margin-bottom: 10px;
 }
-.news_card_content a {
+.news_card_content a , .big_news a {
     background-color: white;
     border-radius: 5px;
     padding: 5px 12px;
@@ -254,7 +265,7 @@ button:hover, .btn {
     color: black;
     text-decoration: none;
 }
-.news_card_content a:hover {
+.news_card_content a:hover, .big_news a:hover {
     background-color: black;
     color: white;
 }

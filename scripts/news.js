@@ -3,7 +3,7 @@
 'https://newsapi.org/v2/top-headlines?country=us&apiKey=afebf1ea55464655b8d6b44367a09353'
 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=afebf1ea55464655b8d6b44367a09353'
 
-import { monthNames, monthShortNames } from "./utils.js"
+import { formatDate, monthNames, monthShortNames } from "./utils.js"
 
 
 const base_url = "https://newsapi.org/v2/"
@@ -67,7 +67,19 @@ const SendNewsApiReq = (url) => {
 
 
 const renderNews = (news) => {
-    if(!news) return
+    if(!news) {
+        renderBigNews()
+        return
+    }
+
+
+    if(news.length > 1) {
+        console.log(news)
+        renderBigNews(news[0])
+        news.shift();
+    } else {
+        renderBigNews()
+    }
     
     const news_container = document.getElementById("news_container")
 
@@ -83,22 +95,41 @@ const renderNews = (news) => {
     });
 }
 
+const renderBigNews = (big_news) => {
+    const big_news_img = document.querySelector("#big_news img")
+    const big_news_title = document.querySelector("#big_news #title")
+    const big_news_authod = document.querySelector("#big_news #author")
+    const big_news_date = document.querySelector("#big_news #date")
+    
+    if(!big_news) {
+        big_news_img.src = default_new_image,
+        big_news_title.innerText = ""
+        big_news_authod.innerText = ""
+        big_news_date.innerText = ""
+    } else {
+
+        formatDate(big_news.publishedAt)
+        
+        big_news_img.src = big_news.urlToImage ?? default_new_image
+        big_news_title.innerText = big_news.title ?? ""
+        big_news_authod.innerText = big_news.author ?? ""
+        big_news_date.innerText = formatDate(big_news.publishedAt) ?? ""
+    }
+}
+
 const makeNewsCard = (news_item) => {
     let new_el = document.createElement("div")
     new_el.classList.add("news_card")
     new_el.classList.add("shadow")
-
-    let date = new Date(news_item?.publishedAt)
-    let formattedDate = `${date.getDate()} ${monthShortNames[date.getMonth()]}, ${date.getFullYear()}`
 
     new_el.innerHTML = `
         <div class="news_image_container">
             <img src="${news_item?.urlToImage ? news_item?.urlToImage : default_new_image}" alt="">
         </div>
         <div class="news_card_content">
-            <div class="news_card_text">${news_item?.description?.substring(0, 70) ?? ""}...</div>
+            <div class="news_card_text">${news_item?.title?.substring(0, 70) ?? ""}...</div>
             <div class="flex between i_center">
-                <div>${formattedDate ?? ""}</div>
+                <div>${formatDate(news_item?.publishedAt) ?? ""}</div>
                 <a href="${news_item?.url}" target="_blank">More</a>
             </div>
         </div>
