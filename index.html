@@ -10,7 +10,11 @@
     <div id="navbar">
         <div class="container flex between i_center">
             <input type="text" placeholder="Search..">
-            <button onclick="Logout()" class="btn">Logout</button>
+            <div>
+                <!-- <button onclick="Logout()" class="btn">Logout</button> -->
+                <a href="/profile.html">Profile</a>
+                <a onclick="Logout()" href="/auth.html">Logout</a>
+            </div>
         </div>
     </div>
 
@@ -18,7 +22,12 @@
 
         <div class="main_grid">
             <div class="big_news shadow">
-
+                <img src="https://picsum.photos/900/400" alt="">
+                <div class="text_container">
+                    <div class="sup_text">Li Cohen</div>
+                    <div class="text">Random News Title</div>
+                    <div class="sub_text">20 January, 2022</div>
+                </div>
             </div>
             <div class="datetime shadow">
                 <div id="clock">

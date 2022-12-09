@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>News POC | Profile</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div id="navbar">
+        <div class="container flex between i_center">
+            <input type="text" class="v_none" placeholder="Search..">
+            <div>
+                <a href="/index.html">Home</a>
+                <a onclick="Logout()" href="/auth.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <script type="module">
+        import {Logout} from './scripts/auth.js'
+        import {InitUsers} from './scripts/main.js'
+
+        window.Logout = Logout
+        
+
+        InitUsers()
+    </script>
+</body>
+</html>
