@@ -40,10 +40,40 @@
                 <div class="label">Country</div>
                 <input type="text" name="country" id="">
             </div>
-            <div class="single_line_input">
-                <div class="label">Country</div>
-                <div>
-                    <button></button>
+            <div class="single_line_input checkbox_single_line_input">
+                <div class="label">Categoris</div>
+                <div class="category_buttons">
+
+                    <!-- "business", "entertainment", "general", "health", "science", "sports", "technology" -->
+                    
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="business" value="business" type="checkbox" name="" id="">
+                        <label for="business">Business</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="entertainment" value="entertainment" type="checkbox" name="" id="">
+                        <label for="entertainment">Entertainment</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="general" value="general" type="checkbox" name="" id="">
+                        <label for="general">General</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="health" value="health" type="checkbox" name="" id="">
+                        <label for="health">Health</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="science" value="science" type="checkbox" name="" id="">
+                        <label for="science">Science</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="sports" value="sports" type="checkbox" name="" id="">
+                        <label for="sports">Sports</label>
+                    </div>
+                    <div class="checkbox_container">
+                        <input onclick="UpdateMyCategories(event)" id="technology" value="technology" type="checkbox" name="" id="">
+                        <label for="technology">Technology</label>
+                    </div>
                 </div>
             </div>
 
@@ -58,14 +88,13 @@
 
     
     <script type="module">
-        import {Logout, SaveMyProfile} from './scripts/auth.js'
+        import {Logout, SaveMyProfile, GetMyProfile, DeleteMyProfile, UpdateMyCategories} from './scripts/auth.js'
         import {InitUsers} from './scripts/main.js'
-        import {GetMyProfile} from './scripts/auth.js'
-        import {DeleteMyProfile} from './scripts/auth.js'
 
         window.Logout = Logout
         window.SaveMyProfile = SaveMyProfile
         window.DeleteMyProfile = DeleteMyProfile
+        window.UpdateMyCategories = UpdateMyCategories
         
 
         InitUsers()

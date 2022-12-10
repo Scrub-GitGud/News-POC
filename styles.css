@@ -403,10 +403,10 @@ button:hover, .btn {
     margin-bottom: 20px;
 }
 #profile_form .single_line_input {
-    width: 40%;
+    /* width: 50%; */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 20px;
 }
 #profile_form .label {
@@ -428,8 +428,40 @@ button:hover, .btn {
     margin-left: 20px;
 }
 
+.checkbox_single_line_input {
+    align-items: flex-start !important;
+}
+.category_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.checkbox_container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.checkbox_container input {
+    width: unset !important;
+    margin-right: 10px;
+    display: none;
 
+}
+.checkbox_container label {
+    margin-bottom: 0 !important;
+    cursor: pointer;
 
+    background-color:  white;
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    margin-right: 5px;
+}
+.checkbox_container input:checked + label {
+    background-color: black;
+    color: white;
+}
 
 
 

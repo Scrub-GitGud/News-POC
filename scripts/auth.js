@@ -5,6 +5,9 @@ import { generateString } from "./utils.js"
 
 let users = []
 let profiles = []
+let categories = []
+
+const all_categories = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
 
 const login_form = document.getElementById("login_form")
 const signup_form = document.getElementById("signup_form")
@@ -178,6 +181,16 @@ const GetMyProfile = () => {
     l_name_el.value = profile.l_name ?? ""
     email_el.value = profile.email ?? ""
     country_el.value = profile.country ?? ""
+    categories = profile.categories ?? []
+    RenderMyCategories(profile.categories ?? [])
+}
+const RenderMyCategories = (categories) => {
+    categories.forEach(category => {
+        const category_checkbox = document.querySelector(`#${category}`)
+        if(category_checkbox) {
+            category_checkbox.checked = true
+        }
+    });
 }
 
 const SaveMyProfile = () => {
@@ -206,6 +219,7 @@ const SaveMyProfile = () => {
         l_name: l_name_el.value,
         email: email_el.value,
         country: country_el.value,
+        categories: categories,
     }
 
     let updated_profiles = profiles.map((profile) => profile.user_id == auth_user_id ? updated_profile : profile)
@@ -238,5 +252,24 @@ const DeleteMyProfile = () => {
     alert("Prfile Deleted")
 }
 
+const UpdateMyCategories = (event) => {
 
-export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth, GetProfiles, GetMyProfile, SaveMyProfile, DeleteMyProfile}
+    let value = event.target.value
+    let isChecked = event.currentTarget.checked ?? false
+    
+    if(isChecked) {
+        if(!categories.includes(value)) {
+            categories.push(value)
+        }
+    } else {
+        if(categories.includes(value)) {
+            let index = categories.indexOf(value);
+            if (index > -1) {
+                categories.splice(index, 1);
+            }
+        }
+    }
+}
+
+
+export {AddUser, GetUsers, Register, Login, Logout, GoToRegisterPage, GoToLoginPage, CheckAuth, GetProfiles, GetMyProfile, SaveMyProfile, DeleteMyProfile, UpdateMyCategories}
